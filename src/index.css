@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color: #101412;
+    background-color: #F5F5F0;
+  }
+
+  /* Consistent focus styles for accessibility */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid #E9B949;
+    outline-offset: 2px;
+  }
+}
+
+/* Subtle pattern for outdoor/topographic styling */
+.bg-topo-subtle {
+  background-image: radial-gradient(rgba(15, 61, 46, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.bg-topo-dark {
+  background-image: radial-gradient(rgba(233, 185, 73, 0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
