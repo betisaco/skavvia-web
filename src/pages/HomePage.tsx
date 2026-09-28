@@ -4,114 +4,159 @@ import { PhoneMockup } from '../components/PhoneMockup';
 import {
   Compass,
   Map,
-  Bookmark,
-  Award,
-  MessageCircle,
-  Download,
+  Navigation,
+  User,
   ArrowRight,
   ShieldCheck,
   CheckCircle2,
-  Navigation,
+  Clock,
+  Smartphone,
+  Sparkles,
 } from 'lucide-react';
+import { DOWNLOAD_CONFIG, isDownloadReady } from '../config/download';
 
 export const HomePage: React.FC = () => {
   useEffect(() => {
     document.title = 'SKAVVIA — Keşfet. Paylaş. İz Bırak.';
   }, []);
 
-  const features = [
+  const downloadReady = isDownloadReady(DOWNLOAD_CONFIG);
+
+  const pillars = [
     {
+      id: 'kesfet',
+      title: 'Topluluk Keşifleri & Anlar',
+      badge: 'Keşfet Akışı',
       icon: Compass,
-      title: 'Keşfet & An Paylaşımı',
       description:
-        'Doğanın derinliklerinden şehir sokaklarına keşfettiğiniz mekanları fotoğraflar, kategoriler ve öneri nedenleriyle anında toplulukla paylaşın.',
-      tag: 'Sosyal Akış',
+        'Sıradan öneriler yerine gezginlerin bizzat deneyimlediği duraklar, fotoğraflar ve samimi seyahat notları. İlgi alanlarınıza göre filtreleyin, topluluk hikâyelerini takip edin.',
+      screen: '/app-screens/screen-discover.png',
+      alt: 'SKAVVIA Keşfet Akışı',
+      bullets: [
+        'Kategorilere göre keşif (Tarih & Kültür, Konakla, Yeme & İçme)',
+        '1-5 fotoğraflı an paylaşımları ve detaylı açıklamalar',
+        'Topluluk hikâyeleri ve yeni rotalar',
+      ],
+      reverse: false,
     },
     {
-      icon: Navigation,
-      title: 'Adım Adım Rotalar & Duraklar',
-      description:
-        'Kendi keşif rotanızı durak durak oluşturun. Ulaşım türü (yürüyüş, araba, bisiklet), tahmini süre ve mesafe detaylarıyla rehberlik edin.',
-      tag: 'Rota Mimarisi',
-    },
-    {
+      id: 'harita',
+      title: 'İnteraktif Gezgin Haritası',
+      badge: 'Canlı Harita',
       icon: Map,
-      title: 'İnteraktif Keşif Haritası',
       description:
-        'Google Maps altyapısıyla çevrenizdeki onaylı keşif noktalarını, rotaları ve gizli durakları canlı harita üzerinde keşfe çıkın.',
-      tag: 'Harita & Konum',
+        'Google Maps altyapısıyla geliştirilen harita üzerinde şehirlerin gizli duraklarını, çevrenizdeki keşif noktalarını ve rota başlangıçlarını doğrudan görüntüleyin.',
+      screen: '/app-screens/screen-map.png',
+      alt: 'SKAVVIA İnteraktif Harita',
+      bullets: [
+        'Harita üzerinde gezgin profilleri ve keşif pinleri',
+        'Hızlı mekan önizleme kartları (Koza Han, tarihi yapılar)',
+        'Tek dokunuşla yol tarifi ve mekan detayları',
+      ],
+      reverse: true,
     },
     {
-      icon: Bookmark,
-      title: 'Kaydetme & Koleksiyonlar',
+      id: 'rotalar',
+      title: 'Adım Adım Rota Mimarisi',
+      badge: 'Rotalar & Duraklar',
+      icon: Navigation,
       description:
-        'Gelecekteki seyahatleriniz için ilginizi çeken rotaları, gönderileri ve durakları kişisel listenize kaydederek elinizin altında tutun.',
-      tag: 'Kişisel Arşiv',
+        'Bir geziyi baştan sona planlayın veya başkalarının rotalarını adım adım takip edin. Her durak için ayrılan süre, toplam mesafe ve ulaşım modu rehberiniz olsun.',
+      screen: '/app-screens/screen-route.png',
+      alt: 'SKAVVIA Rota Detayları',
+      bullets: [
+        'Sıralı durak planı (Ulu Cami, Koza Han vb.)',
+        'Ulaşım türü (Yürüyüş, araba, bisiklet), süre ve mesafe hesaplaması',
+        'Durak bazlı tavsiyeler ve ziyaret süreleri',
+      ],
+      reverse: false,
     },
     {
-      icon: Award,
-      title: 'Gezgin Profili & Rozetler',
+      id: 'profil',
+      title: 'Gezgin Kimliği & Rozetler',
+      badge: 'Profil & Deneyim',
+      icon: User,
       description:
-        'Keşfettikçe ve paylaştıkça XP kazanın, seviye atlayın. Doğa İzcisi, Rota Rehberi gibi resmi SKAVVIA rozetlerinin kilidini açın.',
-      tag: 'Oyunlaştırma',
+        'Yolculuklarınızı dijital bir seyahat günlüğüne dönüştürün. Keşiflerinizi belgeledikçe seviye atlayın, resmi SKAVVIA rozetlerinin sahibi olun.',
+      screen: '/app-screens/screen-profile.png',
+      alt: 'SKAVVIA Kullanıcı Profili ve Rozetler',
+      bullets: [
+        'Gezgin rozetleri (Doğa İzcisi, Rota Rehberi vb.)',
+        'Düzenli keşif ızgarası ve rota koleksiyonları',
+        'Takipçi ve topluluk etkileşimleri',
+      ],
+      reverse: true,
+    },
+  ];
+
+  const steps = [
+    {
+      step: '01',
+      title: 'Keşfet',
+      desc: 'Harita ve akış üzerinden rotaları, gizli durakları ve çevre mekanları inceleyin.',
+      icon: Compass,
     },
     {
-      icon: MessageCircle,
-      title: 'Birebir İletişim & Topluluk',
-      description:
-        'Yol arkadaşı bulun, rota detayları hakkında diğer gezginlere doğrudan mesaj gönderin ve keşif deneyimlerinizi zenginleştirin.',
-      tag: 'Sosyal Keşif',
+      step: '02',
+      title: 'Paylaş',
+      desc: 'Kendi keşif rotanızı duraklar, gerçek fotoğraflar ve seyahat notlarıyla topluluğa aktarın.',
+      icon: Navigation,
+    },
+    {
+      step: '03',
+      title: 'İz Bırak',
+      desc: 'Gezginlere ilham verin, rozetlerin kilidini açın ve kalıcı bir seyahat hafızası oluşturun.',
+      icon: Sparkles,
     },
   ];
 
   return (
     <div className="space-y-24 sm:space-y-32">
-      {/* Hero Section */}
+      {/* 1. Hero Section */}
       <section className="relative pt-12 pb-16 md:pt-20 md:pb-24 overflow-hidden">
         {/* Subtle Topo Gradient Glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-[#0F3D2E]/10 to-[#E9B949]/10 rounded-full blur-3xl pointer-events-none -z-10" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[650px] bg-gradient-to-tr from-[#0F3D2E]/10 via-[#E9B949]/5 to-transparent rounded-full blur-3xl pointer-events-none -z-10" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
             
-            {/* Left Column: Value Proposition & Slogan */}
+            {/* Left Column: Slogan & Value Proposition */}
             <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E2EEE7] border border-[#BFD9CC] text-[#0F3D2E] text-xs font-semibold uppercase tracking-wider">
-                <span className="w-2 h-2 rounded-full bg-[#0F3D2E] animate-ping" />
-                Resmi Sosyal Keşif Platformu
+                <span className="w-2 h-2 rounded-full bg-[#0F3D2E]" />
+                Sosyal Keşif ve Rota Paylaşımı
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#101412] tracking-tight leading-[1.15]">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#101412] tracking-tight leading-[1.12]">
                 Keşfet.{' '}
                 <span className="text-[#0F3D2E]">Paylaş.</span>{' '}
                 <span className="text-[#D4A338]">İz Bırak.</span>
               </h1>
 
               <p className="text-lg sm:text-xl text-[#646B78] max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
-                Türkiye'nin keşif noktalarını, rotalarını ve deneyimlerini toplulukla paylaşmaya
-                odaklanan yeni nesil sosyal keşif platformu.
+                Türkiye'nin saklı rotalarını, eşsiz keşif duraklarını ve gerçek gezgin deneyimlerini toplulukla paylaşmaya odaklanan yeni nesil sosyal keşif platformu.
               </p>
 
               {/* CTAs */}
-              <div className="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+              <div className="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
                 <Link
                   to="/download"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-[#0F3D2E] text-[#F5F5F0] hover:bg-[#0A2B20] text-base font-semibold px-8 py-3.5 rounded-full shadow-md hover:shadow-lg transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E9B949]"
                 >
-                  <Download className="w-5 h-5 text-[#E9B949]" />
-                  <span>Android için indir</span>
+                  <Smartphone className="w-5 h-5 text-[#E9B949]" />
+                  <span>{downloadReady ? 'Android için İndir' : 'Android Sürümü'}</span>
+                  <ArrowRight className="w-4 h-4 opacity-80" />
                 </Link>
 
                 <Link
                   to="/#ozellikler"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#FFFFFF] text-[#0F3D2E] hover:bg-[#E8EDE9] border border-[#E1E4DE] text-base font-semibold px-7 py-3.5 rounded-full transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E9B949]"
                 >
-                  <span>SKAVVIA'yı Keşfet</span>
-                  <ArrowRight className="w-4 h-4 text-[#0F3D2E]" />
+                  <span>Özellikleri Keşfet</span>
                 </Link>
               </div>
 
-              {/* Verified Features Pills */}
+              {/* Verified Product Highlights */}
               <div className="pt-6 border-t border-[#E1E4DE] flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs text-[#646B78]">
                 <div className="flex items-center gap-1.5">
                   <CheckCircle2 className="w-4 h-4 text-[#0F3D2E]" />
@@ -119,7 +164,7 @@ export const HomePage: React.FC = () => {
                 </div>
                 <div className="flex items-center gap-1.5">
                   <CheckCircle2 className="w-4 h-4 text-[#0F3D2E]" />
-                  <span>Gerçek Rota ve Duraklar</span>
+                  <span>Adım Adım Durak Planı</span>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <CheckCircle2 className="w-4 h-4 text-[#0F3D2E]" />
@@ -128,51 +173,79 @@ export const HomePage: React.FC = () => {
               </div>
             </div>
 
-            {/* Right Column: Phone Mockup Container */}
+            {/* Right Column: Authentic Interactive Mockup */}
             <div className="lg:col-span-5 flex justify-center">
-              <PhoneMockup />
+              <PhoneMockup initialScreen="discover" interactive={true} />
             </div>
 
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section id="ozellikler" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-28">
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
+      {/* 2. Core Features Deep Dive (4 Real Screen Pillars) */}
+      <section id="ozellikler" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-28 space-y-24">
+        <div className="text-center max-w-3xl mx-auto space-y-4">
           <h2 className="text-xs font-bold uppercase tracking-widest text-[#0F3D2E]">
-            Gerçek Yolculuklar İçin Tasarlandı
+            Gerçek Ürün Deneyimi
           </h2>
           <p className="text-3xl sm:text-4xl font-extrabold text-[#101412] tracking-tight">
-            Yolun Başından Sonuna Eksiksiz Deneyim
+            Keşfetmekten İz Bırakmaya Eksiksiz Bir Yolculuk
           </p>
           <p className="text-base sm:text-lg text-[#646B78] leading-relaxed">
-            SKAVVIA mobil uygulamasında yer alan her bir özellik, doğadaki ve şehirdeki keşiflerinizi
-            belgelemek ve toplulukla paylaşmak üzere inşa edilmiştir.
+            SKAVVIA mobil uygulamasının her ekranı, yolculuklarınızı sade ve ilham verici bir biçimde belgelemek için tasarlandı.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature, idx) => {
-            const Icon = feature.icon;
+        {/* Alternating Feature Rows */}
+        <div className="space-y-20">
+          {pillars.map((pillar) => {
+            const Icon = pillar.icon;
             return (
               <div
-                key={idx}
-                className="bg-[#FFFFFF] rounded-2xl p-8 border border-[#E1E4DE] shadow-sm hover:shadow-md transition-shadow relative flex flex-col justify-between"
+                key={pillar.id}
+                className={`grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center ${
+                  pillar.reverse ? 'lg:flex-row-reverse' : ''
+                }`}
               >
-                <div>
-                  <div className="w-12 h-12 rounded-xl bg-[#E2EEE7] flex items-center justify-center text-[#0F3D2E] mb-6">
-                    <Icon className="w-6 h-6" />
+                {/* Text Content */}
+                <div className={`lg:col-span-6 space-y-6 ${pillar.reverse ? 'lg:order-2' : 'lg:order-1'}`}>
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E2EEE7] text-[#0F3D2E] text-xs font-bold uppercase tracking-wider">
+                    <Icon className="w-3.5 h-3.5" />
+                    <span>{pillar.badge}</span>
                   </div>
-                  <span className="text-[11px] uppercase tracking-wider font-bold text-[#E9B949] bg-[#0F3D2E] px-2.5 py-0.5 rounded-full inline-block mb-3">
-                    {feature.tag}
-                  </span>
-                  <h3 className="text-xl font-bold text-[#101412] mb-3">
-                    {feature.title}
+
+                  <h3 className="text-2xl sm:text-3xl font-extrabold text-[#101412] tracking-tight">
+                    {pillar.title}
                   </h3>
-                  <p className="text-sm text-[#646B78] leading-relaxed">
-                    {feature.description}
+
+                  <p className="text-base text-[#646B78] leading-relaxed">
+                    {pillar.description}
                   </p>
+
+                  <ul className="space-y-3 pt-2 text-sm text-[#101412]">
+                    {pillar.bullets.map((bullet, bIdx) => (
+                      <li key={bIdx} className="flex items-start gap-2.5">
+                        <CheckCircle2 className="w-4 h-4 text-[#0F3D2E] shrink-0 mt-0.5" />
+                        <span>{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Real Screen Display in Native Phone Bezel */}
+                <div className={`lg:col-span-6 flex justify-center ${pillar.reverse ? 'lg:order-1' : 'lg:order-2'}`}>
+                  <div className="relative w-full max-w-[280px] sm:max-w-[300px] rounded-[42px] p-2.5 bg-[#0A2B20] shadow-xl ring-1 ring-white/20 select-none">
+                    <div className="overflow-hidden rounded-[34px] bg-[#08130F] border border-[#26382F]">
+                      <img
+                        src={pillar.screen}
+                        alt={pillar.alt}
+                        width={460}
+                        height={1024}
+                        className="w-full h-auto object-contain block"
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
             );
@@ -180,53 +253,153 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* Philosophy / Story Section */}
-      <section className="bg-[#0F3D2E] text-[#F5F5F0] py-20 rounded-3xl mx-4 sm:mx-6 lg:mx-8 px-6 sm:px-12 lg:px-16 relative overflow-hidden">
-        <div className="max-w-4xl mx-auto space-y-6 text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0A2B20] text-[#E9B949] text-xs font-semibold tracking-wider uppercase border border-[#E9B949]/20">
-            <Compass className="w-3.5 h-3.5" />
-            Keşif Vizyonu
+      {/* 3. "Nasıl Çalışır?" Section */}
+      <section className="bg-[#FFFFFF] border-y border-[#E1E4DE] py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+          <div className="text-center max-w-2xl mx-auto space-y-3">
+            <h2 className="text-xs font-bold uppercase tracking-widest text-[#0F3D2E]">
+              Nasıl Çalışır?
+            </h2>
+            <p className="text-3xl font-extrabold text-[#101412]">
+              Üç Adımda Sosyal Keşif
+            </p>
+            <p className="text-sm sm:text-base text-[#646B78]">
+              SKAVVIA topluluğunda yollar birbirine bağlanır, keşifler kalıcı hale gelir.
+            </p>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
-            Algoritmik gürültüden uzak, gerçek gezgin rotaları.
-          </h2>
-          <p className="text-[#BFD9CC] text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
-            SKAVVIA, popüler reklam odaklı mekan önerileri yerine; dağ patikalarında, sahil kasabalarında
-            ve şehir aralarında gerçekten tecrübe edilmiş rotaları toplulukla buluşturur.
-          </p>
-          <div className="pt-4 flex justify-center">
-            <Link
-              to="/about"
-              className="inline-flex items-center gap-2 bg-[#E9B949] text-[#101412] hover:bg-[#D4A338] font-bold text-sm px-6 py-3 rounded-full transition-all shadow-sm"
-            >
-              <span>Hikâyemizi Okuyun</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {steps.map((st, sIdx) => {
+              const Icon = st.icon;
+              return (
+                <div
+                  key={sIdx}
+                  className="bg-[#F5F5F0] rounded-2xl p-8 border border-[#E1E4DE] space-y-4 relative"
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="w-12 h-12 rounded-xl bg-[#0F3D2E] text-[#E9B949] flex items-center justify-center">
+                      <Icon className="w-6 h-6" />
+                    </div>
+                    <span className="text-2xl font-black font-mono text-[#BFD9CC]">
+                      {st.step}
+                    </span>
+                  </div>
+                  <h3 className="text-xl font-bold text-[#101412]">{st.title}</h3>
+                  <p className="text-sm text-[#646B78] leading-relaxed">{st.desc}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* Download Banner CTA */}
+      {/* 4. Gerçek Ekranlar Galerisi (Mobile-friendly Gallery) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+        <div className="text-center max-w-2xl mx-auto space-y-3">
+          <h2 className="text-xs font-bold uppercase tracking-widest text-[#0F3D2E]">
+            Uygulama Vitrini
+          </h2>
+          <p className="text-3xl font-extrabold text-[#101412]">
+            SKAVVIA Ekranları
+          </p>
+          <p className="text-sm text-[#646B78]">
+            Uygulama içindeki gerçek ekran görüntüleri, Bursa rotası ve topluluk deneyimi.
+          </p>
+        </div>
+
+        {/* 4-Column Responsive Grid with Exact Image Aspect Ratios */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+          <div className="space-y-3 text-center">
+            <div className="rounded-3xl p-2 bg-[#0A2B20] border border-[#26382F] shadow-md overflow-hidden">
+              <img
+                src="/app-screens/screen-discover.png"
+                alt="Keşfet Akışı"
+                width={460}
+                height={1024}
+                className="w-full h-auto rounded-2xl object-contain block"
+                loading="lazy"
+              />
+            </div>
+            <p className="text-xs font-bold text-[#101412]">Keşfet Akışı</p>
+          </div>
+
+          <div className="space-y-3 text-center">
+            <div className="rounded-3xl p-2 bg-[#0A2B20] border border-[#26382F] shadow-md overflow-hidden">
+              <img
+                src="/app-screens/screen-map.png"
+                alt="İnteraktif Harita"
+                width={460}
+                height={1024}
+                className="w-full h-auto rounded-2xl object-contain block"
+                loading="lazy"
+              />
+            </div>
+            <p className="text-xs font-bold text-[#101412]">Gezgin Haritası</p>
+          </div>
+
+          <div className="space-y-3 text-center">
+            <div className="rounded-3xl p-2 bg-[#0A2B20] border border-[#26382F] shadow-md overflow-hidden">
+              <img
+                src="/app-screens/screen-route.png"
+                alt="Rota Detayı"
+                width={460}
+                height={1024}
+                className="w-full h-auto rounded-2xl object-contain block"
+                loading="lazy"
+              />
+            </div>
+            <p className="text-xs font-bold text-[#101412]">Rota & Duraklar</p>
+          </div>
+
+          <div className="space-y-3 text-center">
+            <div className="rounded-3xl p-2 bg-[#0A2B20] border border-[#26382F] shadow-md overflow-hidden">
+              <img
+                src="/app-screens/screen-profile.png"
+                alt="Gezgin Profili"
+                width={460}
+                height={1024}
+                className="w-full h-auto rounded-2xl object-contain block"
+                loading="lazy"
+              />
+            </div>
+            <p className="text-xs font-bold text-[#101412]">Gezgin Profili</p>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. Android Sürüm Durumu Kapanış Alanı */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
-        <div className="bg-[#FFFFFF] border-2 border-[#0F3D2E] rounded-3xl p-8 sm:p-12 shadow-sm text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-8">
-          <div className="space-y-3">
-            <div className="flex items-center justify-center md:justify-start gap-2 text-xs font-bold text-[#0F3D2E] uppercase tracking-wider">
-              <ShieldCheck className="w-4 h-4 text-[#0F3D2E]" />
-              <span>Android Test Sürümü</span>
+        <div className="bg-[#FFFFFF] border-2 border-[#0F3D2E] rounded-3xl p-8 sm:p-12 shadow-sm flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="space-y-3 text-center md:text-left">
+            <div className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0F3D2E] uppercase tracking-wider">
+              {downloadReady ? (
+                <>
+                  <ShieldCheck className="w-4 h-4 text-[#0F3D2E]" />
+                  <span>Android Sürümü Yayında</span>
+                </>
+              ) : (
+                <>
+                  <Clock className="w-4 h-4 text-[#D97706]" />
+                  <span>Android Sürümü Hazırlanıyor (v{DOWNLOAD_CONFIG.version})</span>
+                </>
+              )}
             </div>
             <h3 className="text-2xl sm:text-3xl font-extrabold text-[#101412]">
-              SKAVVIA Deneyimini Hemen Başlatın
+              SKAVVIA Android Dağıtım Durumu
             </h3>
             <p className="text-[#646B78] text-sm sm:text-base max-w-md">
-              Android cihazınız için optimize edilmiş APK sürümünü indirerek ilk keşiflerinizi paylaşmaya başlayın.
+              {downloadReady
+                ? 'Resmi APK dosyasını indirerek Android cihazınızda hemen keşfe başlayabilirsiniz.'
+                : `v${DOWNLOAD_CONFIG.version} (${DOWNLOAD_CONFIG.architecture}, ~${DOWNLOAD_CONFIG.size}) test paketi hazırlanmaktadır. Dağıtım detayları ve gereksinimler için indirme sayfasını inceleyebilirsiniz.`}
             </p>
           </div>
+
           <Link
             to="/download"
-            className="shrink-0 inline-flex items-center gap-2.5 bg-[#0F3D2E] text-[#F5F5F0] hover:bg-[#0A2B20] text-base font-semibold px-8 py-4 rounded-full shadow-md hover:shadow-lg transition-all"
+            className="shrink-0 inline-flex items-center gap-2.5 bg-[#0F3D2E] text-[#F5F5F0] hover:bg-[#0A2B20] text-base font-semibold px-8 py-4 rounded-full shadow-md hover:shadow-lg transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E9B949]"
           >
-            <Download className="w-5 h-5 text-[#E9B949]" />
-            <span>İndirme Sayfasına Git</span>
+            <Smartphone className="w-5 h-5 text-[#E9B949]" />
+            <span>İndirme Sayfasını İncele</span>
           </Link>
         </div>
       </section>

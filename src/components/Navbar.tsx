@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useRouter } from '../router';
-import { Menu, X, Download } from 'lucide-react';
+import { Menu, X, Smartphone, Download } from 'lucide-react';
+import { DOWNLOAD_CONFIG, isDownloadReady } from '../config/download';
 
 export const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { currentPath } = useRouter();
+  const downloadReady = isDownloadReady(DOWNLOAD_CONFIG);
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
@@ -14,11 +16,25 @@ export const Navbar: React.FC = () => {
     setMobileMenuOpen(false);
   };
 
+  // Close mobile menu on Escape key for accessibility
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
   const isLinkActive = (path: string) => {
     if (path === '/' && currentPath === '/') return true;
     if (path !== '/' && currentPath.startsWith(path)) return true;
     return false;
   };
+
+  const downloadButtonText = downloadReady ? 'Android için İndir' : 'Android Sürümü';
+  const DownloadIcon = downloadReady ? Download : Smartphone;
 
   return (
     <header className="sticky top-0 z-50 bg-[#F5F5F0]/90 backdrop-blur-md border-b border-[#E1E4DE] transition-all">
@@ -76,8 +92,8 @@ export const Navbar: React.FC = () => {
               to="/download"
               className="inline-flex items-center gap-2 bg-[#0F3D2E] text-[#F5F5F0] hover:bg-[#0A2B20] text-sm font-medium px-5 py-2.5 rounded-full shadow-sm hover:shadow transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E9B949] focus-visible:ring-offset-2"
             >
-              <Download className="w-4 h-4 text-[#E9B949]" aria-hidden="true" />
-              <span>Android için indir</span>
+              <DownloadIcon className="w-4 h-4 text-[#E9B949]" aria-hidden="true" />
+              <span>{downloadButtonText}</span>
             </Link>
           </nav>
 
@@ -130,8 +146,8 @@ export const Navbar: React.FC = () => {
             onClick={closeMobileMenu}
             className="flex items-center justify-center gap-2 w-full bg-[#0F3D2E] text-[#F5F5F0] px-4 py-3 rounded-xl font-medium text-base shadow-sm"
           >
-            <Download className="w-5 h-5 text-[#E9B949]" aria-hidden="true" />
-            <span>Android için indir</span>
+            <DownloadIcon className="w-5 h-5 text-[#E9B949]" aria-hidden="true" />
+            <span>{downloadButtonText}</span>
           </Link>
         </div>
       )}

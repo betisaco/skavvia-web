@@ -90,7 +90,7 @@ Hesap silme işleminin geri alınamaz olduğunu biliyor ve onaylıyorum.`;
               </span>
               <div>
                 <strong className="text-[#101412] block">İşlem Onayı ve Silme Tamamlanması</strong>
-                Talebiniz bize ulaştığında güvenlik teyidi sağlanır ve yasal saklama yükümlülükleri saklı kalmak kaydıyla en geç 30 gün içerisinde tüm verileriniz tamamen silinir.
+                Talebiniz bize ulaştığında hesap sahipliği teyidi sağlanır; yasal saklama yükümlülükleri saklı kalmak kaydıyla hesabınız ve ilişkili tüm verileriniz destek ekibimizce işleme alınarak kalıcı olarak silinir ve tarafınıza bilgi iletilir.
               </div>
             </div>
           </div>

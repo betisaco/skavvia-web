@@ -58,6 +58,10 @@ server.listen(4173, async () => {
     { path: '/sitemap.xml', expectedHtmlToken: 'https://skavvia.com/' },
     { path: '/.well-known/assetlinks.json', expectedHtmlToken: 'com.skavvia.mobile' },
     { path: '/CNAME', expectedHtmlToken: 'skavvia.com' },
+    { path: '/app-screens/screen-discover.png', expectedHtmlToken: '' },
+    { path: '/app-screens/screen-map.png', expectedHtmlToken: '' },
+    { path: '/app-screens/screen-route.png', expectedHtmlToken: '' },
+    { path: '/app-screens/screen-profile.png', expectedHtmlToken: '' },
   ];
 
   let hasError = false;
@@ -65,17 +69,21 @@ server.listen(4173, async () => {
   for (const item of routesToTest) {
     try {
       const res = await fetch(`http://localhost:4173${item.path}`);
-      const text = await res.text();
       const status = res.status;
 
       if (status !== 200) {
         console.error(`❌ Route ${item.path} returned status ${status}`);
         hasError = true;
-      } else if (!text.includes(item.expectedHtmlToken)) {
-        console.error(`❌ Route ${item.path} missing expected token "${item.expectedHtmlToken}"`);
-        hasError = true;
+      } else if (item.expectedHtmlToken) {
+        const text = await res.text();
+        if (!text.includes(item.expectedHtmlToken)) {
+          console.error(`❌ Route ${item.path} missing expected token "${item.expectedHtmlToken}"`);
+          hasError = true;
+        } else {
+          console.log(`✅ Route ${item.path} - 200 OK`);
+        }
       } else {
-        console.log(`✅ Route ${item.path} - 200 OK`);
+        console.log(`✅ Asset ${item.path} - 200 OK (Image asset verified)`);
       }
     } catch (err) {
       console.error(`❌ Error fetching ${item.path}:`, err);
@@ -102,7 +110,7 @@ server.listen(4173, async () => {
     { label: 'Version', string: '1.0.5.1' },
     { label: 'Architecture', string: 'arm64-v8a' },
     { label: 'Approximate Size', string: '66 MB' },
-    { label: 'Privacy Policy UGC', string: 'Row Level Security' },
+    { label: 'Pending Status', string: 'Android Sürümü Hazırlanıyor' },
   ];
 
   for (const check of bundleChecks) {
