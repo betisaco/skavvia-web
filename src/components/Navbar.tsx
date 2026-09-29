@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useRouter } from '../router';
-import { Menu, X, Smartphone, Download } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { DOWNLOAD_CONFIG, isDownloadReady } from '../config/download';
 
 export const Navbar: React.FC = () => {
@@ -16,16 +16,35 @@ export const Navbar: React.FC = () => {
     setMobileMenuOpen(false);
   };
 
+  // Prevent background scrolling when mobile menu is open (without layout shift)
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      const originalOverflow = document.body.style.overflow;
+      const originalPaddingRight = document.body.style.paddingRight;
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+
+      if (scrollbarWidth > 0) {
+        document.body.style.paddingRight = `${scrollbarWidth}px`;
+      }
+      document.body.style.overflow = 'hidden';
+
+      return () => {
+        document.body.style.overflow = originalOverflow;
+        document.body.style.paddingRight = originalPaddingRight;
+      };
+    }
+  }, [mobileMenuOpen]);
+
   // Close mobile menu on Escape key for accessibility
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
+      if (e.key === 'Escape' && mobileMenuOpen) {
         setMobileMenuOpen(false);
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
+  }, [mobileMenuOpen]);
 
   const isLinkActive = (path: string) => {
     if (path === '/' && currentPath === '/') return true;
@@ -33,67 +52,74 @@ export const Navbar: React.FC = () => {
     return false;
   };
 
-  const downloadButtonText = downloadReady ? 'Android için İndir' : 'Android Sürümü';
-  const DownloadIcon = downloadReady ? Download : Smartphone;
-
   return (
-    <header className="sticky top-0 z-50 bg-[#F5F5F0]/90 backdrop-blur-md border-b border-[#E1E4DE] transition-all">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo & Wordmark */}
+    <header className="sticky top-0 z-50 bg-[#F5F5F0]/95 backdrop-blur-md border-b border-[#E1E4DE]/80 transition-all">
+      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-20 xl:px-[120px]">
+        <div className="flex items-center justify-between h-[72px]">
+          
+          {/* LEFT: Brand Logo & Wordmark (Acts as Home link, aligned to 120px desktop grid) */}
           <Link
             to="/"
             onClick={closeMobileMenu}
-            className="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E9B949] rounded-lg p-1"
+            className="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-lg py-1 pr-1"
             aria-label="SKAVVIA Ana Sayfa"
           >
             <img
               src="/skavvia-app-icon.png"
               alt="SKAVVIA Logo İkonu"
-              className="w-10 h-10 rounded-xl shadow-sm object-cover"
-              width={40}
-              height={40}
+              className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl shadow-xs object-cover"
+              width={36}
+              height={36}
             />
             <img
               src="/brand/skavvia-wordmark-forest.png"
               alt="SKAVVIA"
-              className="h-7 w-auto object-contain"
+              className="h-6 sm:h-6.5 w-auto object-contain"
               style={{ aspectRatio: '295/70' }}
-              width={118}
-              height={28}
+              width={110}
+              height={26}
             />
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8" aria-label="Masaüstü Menü">
+          {/* RIGHT: Desktop Navigation (Figma Spec: Özellikler, Hakkımızda, Destek, Android Sürümü ↗) */}
+          <nav className="hidden md:flex items-center gap-7 lg:gap-8 xl:gap-9" aria-label="Masaüstü Menü">
             <Link
               to="/#ozellikler"
-              className="text-sm font-medium text-[#646B78] hover:text-[#0F3D2E] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E9B949] rounded px-2 py-1"
+              className="text-sm font-medium text-[#4A5568] hover:text-[#0F3D2E] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-gold py-1"
             >
               Özellikler
             </Link>
+
             <Link
               to="/about"
-              className={`text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E9B949] rounded px-2 py-1 ${
-                isLinkActive('/about') ? 'text-[#0F3D2E] font-semibold' : 'text-[#646B78] hover:text-[#0F3D2E]'
+              className={`text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-gold py-1 ${
+                isLinkActive('/about')
+                  ? 'text-[#0F3D2E] font-semibold'
+                  : 'text-[#4A5568] hover:text-[#0F3D2E]'
               }`}
             >
-              Hakkında
+              Hakkımızda
             </Link>
+
             <Link
               to="/support"
-              className={`text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E9B949] rounded px-2 py-1 ${
-                isLinkActive('/support') ? 'text-[#0F3D2E] font-semibold' : 'text-[#646B78] hover:text-[#0F3D2E]'
+              className={`text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-gold py-1 ${
+                isLinkActive('/support')
+                  ? 'text-[#0F3D2E] font-semibold'
+                  : 'text-[#4A5568] hover:text-[#0F3D2E]'
               }`}
             >
               Destek
             </Link>
+
+            {/* Android CTA: Guarded by DOWNLOAD_CONFIG */}
             <Link
               to="/download"
-              className="inline-flex items-center gap-2 bg-[#0F3D2E] text-[#F5F5F0] hover:bg-[#0A2B20] text-sm font-medium px-5 py-2.5 rounded-full shadow-sm hover:shadow transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E9B949] focus-visible:ring-offset-2"
+              className="inline-flex items-center gap-1.5 bg-[#0F3D2E] text-[#F5F5F0] hover:bg-[#0A2B20] text-sm font-medium px-5 py-2.5 rounded-full shadow-xs hover:shadow transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-gold ml-1"
+              aria-label={downloadReady ? 'Android için İndir' : 'Android Sürümü Durumu'}
             >
-              <DownloadIcon className="w-4 h-4 text-[#E9B949]" aria-hidden="true" />
-              <span>{downloadButtonText}</span>
+              <span>Android Sürümü</span>
+              <span className="text-[#E9B949] text-base leading-none font-normal" aria-hidden="true">↗</span>
             </Link>
           </nav>
 
@@ -102,7 +128,7 @@ export const Navbar: React.FC = () => {
             <button
               type="button"
               onClick={toggleMobileMenu}
-              className="p-2 rounded-lg text-[#101412] hover:bg-[#E8EDE9] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E9B949]"
+              className="p-2 rounded-lg text-brand-obsidian hover:bg-forest-100/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold transition-colors"
               aria-controls="mobile-menu"
               aria-expanded={mobileMenuOpen}
               aria-label={mobileMenuOpen ? 'Menüyü Kapat' : 'Menüyü Aç'}
@@ -110,45 +136,66 @@ export const Navbar: React.FC = () => {
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
+
         </div>
       </div>
 
       {/* Mobile menu dropdown */}
       {mobileMenuOpen && (
-        <div id="mobile-menu" className="md:hidden border-t border-[#E1E4DE] bg-[#F5F5F0] px-4 pt-3 pb-6 space-y-3">
+        <div
+          id="mobile-menu"
+          className="md:hidden border-t border-brand-lightBorder bg-brand-offwhite px-5 pt-3 pb-6 space-y-2 shadow-lg"
+        >
+          <Link
+            to="/"
+            onClick={closeMobileMenu}
+            className={`block px-3.5 py-2.5 rounded-xl text-base font-medium transition-colors ${
+              isLinkActive('/')
+                ? 'bg-forest-100 text-forest font-semibold'
+                : 'text-brand-obsidian hover:bg-forest-50'
+            }`}
+          >
+            Ana Sayfa
+          </Link>
           <Link
             to="/#ozellikler"
             onClick={closeMobileMenu}
-            className="block px-3 py-2 rounded-lg text-base font-medium text-[#101412] hover:bg-[#E8EDE9]"
+            className="block px-3.5 py-2.5 rounded-xl text-base font-medium text-brand-obsidian hover:bg-forest-50 transition-colors"
           >
             Özellikler
           </Link>
           <Link
             to="/about"
             onClick={closeMobileMenu}
-            className={`block px-3 py-2 rounded-lg text-base font-medium ${
-              isLinkActive('/about') ? 'bg-[#E2EEE7] text-[#0F3D2E] font-semibold' : 'text-[#101412] hover:bg-[#E8EDE9]'
+            className={`block px-3.5 py-2.5 rounded-xl text-base font-medium transition-colors ${
+              isLinkActive('/about')
+                ? 'bg-forest-100 text-forest font-semibold'
+                : 'text-brand-obsidian hover:bg-forest-50'
             }`}
           >
-            Hakkında
+            Hakkımızda
           </Link>
           <Link
             to="/support"
             onClick={closeMobileMenu}
-            className={`block px-3 py-2 rounded-lg text-base font-medium ${
-              isLinkActive('/support') ? 'bg-[#E2EEE7] text-[#0F3D2E] font-semibold' : 'text-[#101412] hover:bg-[#E8EDE9]'
+            className={`block px-3.5 py-2.5 rounded-xl text-base font-medium transition-colors ${
+              isLinkActive('/support')
+                ? 'bg-forest-100 text-forest font-semibold'
+                : 'text-brand-obsidian hover:bg-forest-50'
             }`}
           >
             Destek
           </Link>
-          <Link
-            to="/download"
-            onClick={closeMobileMenu}
-            className="flex items-center justify-center gap-2 w-full bg-[#0F3D2E] text-[#F5F5F0] px-4 py-3 rounded-xl font-medium text-base shadow-sm"
-          >
-            <DownloadIcon className="w-5 h-5 text-[#E9B949]" aria-hidden="true" />
-            <span>{downloadButtonText}</span>
-          </Link>
+          <div className="pt-2">
+            <Link
+              to="/download"
+              onClick={closeMobileMenu}
+              className="flex items-center justify-center gap-2 w-full bg-forest text-brand-offwhite px-4 py-3 rounded-xl font-semibold text-base shadow-xs"
+            >
+              <span>Android Sürümü</span>
+              <span className="text-gold text-base leading-none" aria-hidden="true">↗</span>
+            </Link>
+          </div>
         </div>
       )}
     </header>
