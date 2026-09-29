@@ -115,8 +115,9 @@ export const Navbar: React.FC = () => {
             {/* Android CTA: Guarded by DOWNLOAD_CONFIG */}
             <Link
               to="/download"
-              className="inline-flex items-center gap-1.5 bg-[#0F3D2E] text-[#F5F5F0] hover:bg-[#0A2B20] text-sm font-medium px-5 py-2.5 rounded-full shadow-xs hover:shadow transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-gold ml-1"
+              className={`relative inline-flex items-center gap-1.5 bg-[#0F3D2E] text-[#F5F5F0] hover:bg-[#0A2B20] text-sm font-medium px-5 py-2.5 rounded-full shadow-xs hover:shadow transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-gold ml-1 ${isLinkActive('/download') ? 'after:absolute after:-bottom-2 after:inset-x-4 after:h-[2px] after:rounded-full after:bg-[#E9B949]' : ''}`}
               aria-label={downloadReady ? 'Android için İndir' : 'Android Sürümü Durumu'}
+              aria-current={isLinkActive('/download') ? 'page' : undefined}
             >
               <span>Android Sürümü</span>
               <Smartphone className="w-4 h-4 text-[#E9B949]" aria-hidden="true" />
@@ -190,7 +191,8 @@ export const Navbar: React.FC = () => {
             <Link
               to="/download"
               onClick={closeMobileMenu}
-              className="flex items-center justify-center gap-2 w-full bg-forest text-brand-offwhite px-4 py-3 rounded-xl font-semibold text-base shadow-xs"
+              className={`flex items-center justify-center gap-2 w-full bg-forest text-brand-offwhite px-4 py-3 rounded-xl font-semibold text-base shadow-xs ${isLinkActive('/download') ? 'ring-2 ring-[#E9B949]/80' : ''}`}
+              aria-current={isLinkActive('/download') ? 'page' : undefined}
             >
               <span>Android Sürümü</span>
               <Smartphone className="w-4 h-4 text-gold" aria-hidden="true" />
