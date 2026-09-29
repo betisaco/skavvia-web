@@ -50,7 +50,7 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({
   return (
     <div className={`flex flex-col items-center ${className}`}>
       {/* Premium Phone Container */}
-      <div className="relative mx-auto w-full max-w-[270px] sm:max-w-[295px] lg:max-w-[315px] rounded-[44px] p-2.5 sm:p-3 bg-[#0A2B20] shadow-2xl ring-1 ring-white/20 select-none transition-transform duration-300 hover:scale-[1.01]">
+      <div className="relative mx-auto w-full max-w-[270px] sm:max-w-[295px] md:max-w-[245px] lg:max-w-[255px] xl:max-w-[260px] rounded-[44px] p-2.5 sm:p-3 bg-[#0A2B20] shadow-2xl ring-1 ring-white/20 select-none transition-transform duration-300 hover:scale-[1.01]">
         {/* Subtle Side Buttons on Device Frame */}
         <div className="absolute -left-[4px] top-24 w-[3px] h-8 bg-[#13231D] rounded-l-sm" aria-hidden="true" />
         <div className="absolute -left-[4px] top-36 w-[3px] h-12 bg-[#13231D] rounded-l-sm" aria-hidden="true" />

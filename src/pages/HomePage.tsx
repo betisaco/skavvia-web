@@ -1,19 +1,12 @@
 import React, { useEffect } from 'react';
 import { Link } from '../router';
 import { PhoneMockup } from '../components/PhoneMockup';
-import {
-  ShieldCheck,
-  Clock,
-  Smartphone,
-} from 'lucide-react';
-import { DOWNLOAD_CONFIG, isDownloadReady } from '../config/download';
+import { Smartphone } from 'lucide-react';
 
 export const HomePage: React.FC = () => {
   useEffect(() => {
     document.title = 'SKAVVIA — Keşfet. Paylaş. İz Bırak.';
   }, []);
-
-  const downloadReady = isDownloadReady(DOWNLOAD_CONFIG);
 
   const steps = [
     {
@@ -214,7 +207,7 @@ export const HomePage: React.FC = () => {
 
             {/* Right Column: Restored Physical Device Shell with V2 Discover Screen */}
             <div className="lg:col-span-6 flex justify-center lg:justify-end">
-              <div className="relative w-full max-w-[270px] sm:max-w-[295px] lg:max-w-[315px] rounded-[44px] p-2.5 sm:p-3 bg-[#0A2B20] shadow-2xl ring-1 ring-white/20 select-none">
+              <div className="relative w-full max-w-[270px] sm:max-w-[295px] md:max-w-[245px] lg:max-w-[255px] xl:max-w-[260px] rounded-[44px] p-2.5 sm:p-3 bg-[#0A2B20] shadow-2xl ring-1 ring-white/20 select-none">
                 {/* Subtle Side Buttons on Device Frame */}
                 <div className="absolute -left-[4px] top-24 w-[3px] h-8 bg-[#13231D] rounded-l-sm" aria-hidden="true" />
                 <div className="absolute -left-[4px] top-36 w-[3px] h-12 bg-[#13231D] rounded-l-sm" aria-hidden="true" />
@@ -258,7 +251,7 @@ export const HomePage: React.FC = () => {
             
             {/* Left Visual Column (Desktop Left / Mobile Below Text): Framed Map Phone */}
             <div className="lg:col-span-6 order-2 lg:order-1 flex justify-center lg:justify-start">
-              <div className="relative w-full max-w-[270px] sm:max-w-[295px] lg:max-w-[315px] rounded-[44px] p-2.5 sm:p-3 bg-[#0A2B20] shadow-2xl ring-1 ring-white/20 select-none">
+              <div className="relative w-full max-w-[270px] sm:max-w-[295px] md:max-w-[245px] lg:max-w-[255px] xl:max-w-[260px] rounded-[44px] p-2.5 sm:p-3 bg-[#0A2B20] shadow-2xl ring-1 ring-white/20 select-none">
                 {/* Subtle Side Buttons on Device Frame */}
                 <div className="absolute -left-[4px] top-24 w-[3px] h-8 bg-[#13231D] rounded-l-sm" aria-hidden="true" />
                 <div className="absolute -left-[4px] top-36 w-[3px] h-12 bg-[#13231D] rounded-l-sm" aria-hidden="true" />
@@ -361,7 +354,7 @@ export const HomePage: React.FC = () => {
             {/* Right Visual Column: Framed Routes Phone + Stop Indicator */}
             <div className="lg:col-span-6 flex items-center justify-center lg:justify-end gap-3.5 sm:gap-6">
               {/* SKAVVIA Physical Device Frame */}
-              <div className="relative w-full max-w-[220px] sm:max-w-[270px] lg:max-w-[305px] rounded-[44px] p-2.5 sm:p-3 bg-[#0A2B20] shadow-2xl ring-1 ring-white/20 select-none shrink-0">
+              <div className="relative w-full max-w-[220px] sm:max-w-[270px] md:max-w-[235px] lg:max-w-[250px] xl:max-w-[255px] rounded-[44px] p-2.5 sm:p-3 bg-[#0A2B20] shadow-2xl ring-1 ring-white/20 select-none shrink-0">
                 {/* Subtle Side Buttons on Device Frame */}
                 <div className="absolute -left-[4px] top-24 w-[3px] h-8 bg-[#13231D] rounded-l-sm" aria-hidden="true" />
                 <div className="absolute -left-[4px] top-36 w-[3px] h-12 bg-[#13231D] rounded-l-sm" aria-hidden="true" />
@@ -433,7 +426,7 @@ export const HomePage: React.FC = () => {
             
             {/* Left Visual Column (Desktop Left / Mobile Below Text): Framed Profile Phone */}
             <div className="lg:col-span-6 order-2 lg:order-1 flex justify-center lg:justify-start">
-              <div className="relative w-full max-w-[270px] sm:max-w-[295px] lg:max-w-[315px] rounded-[44px] p-2.5 sm:p-3 bg-[#0A2B20] shadow-2xl ring-1 ring-white/20 select-none">
+              <div className="relative w-full max-w-[270px] sm:max-w-[295px] md:max-w-[245px] lg:max-w-[255px] xl:max-w-[260px] rounded-[44px] p-2.5 sm:p-3 bg-[#0A2B20] shadow-2xl ring-1 ring-white/20 select-none">
                 {/* Subtle Side Buttons on Device Frame */}
                 <div className="absolute -left-[4px] top-24 w-[3px] h-8 bg-[#13231D] rounded-l-sm" aria-hidden="true" />
                 <div className="absolute -left-[4px] top-36 w-[3px] h-12 bg-[#13231D] rounded-l-sm" aria-hidden="true" />
@@ -486,119 +479,41 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* Subsequent sections: App Gallery, CTA */}
-      <div className="space-y-24 sm:space-y-32 pt-20 sm:pt-28">
-        {/* Uygulama Vitrini (Mobile-friendly Gallery) */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-        <div className="text-center max-w-2xl mx-auto space-y-3">
-          <h2 className="text-xs font-bold uppercase tracking-widest text-[#0F3D2E]">
-            Uygulama Vitrini
-          </h2>
-          <p className="text-3xl font-extrabold text-[#101412]">
-            SKAVVIA Ekranları
-          </p>
-          <p className="text-sm text-[#646B78]">
-            Uygulama içindeki gerçek ekran görüntüleri, Bursa rotası ve topluluk deneyimi.
-          </p>
+      {/* 7. Android Preparation CTA */}
+      <section aria-labelledby="android-preparation-title" className="relative w-full overflow-hidden bg-[#06291F] text-[#F5F5F0]">
+        <div className="absolute inset-0 z-0 pointer-events-none select-none">
+          <img
+            src="/images/home/skavvia-android-cta-bg-v2.png"
+            alt=""
+            className="w-full h-full object-cover object-center"
+            loading="lazy"
+            aria-hidden="true"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#041F18]/95 via-[#06291F]/80 to-[#06291F]/25" />
         </div>
 
-        {/* 4-Column Responsive Grid with Exact Image Aspect Ratios */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-          <div className="space-y-3 text-center">
-            <div className="rounded-3xl p-2 bg-[#0A2B20] border border-[#26382F] shadow-md overflow-hidden">
-              <img
-                src="/app-screens/screen-discover.png"
-                alt="Keşfet Akışı"
-                width={460}
-                height={1024}
-                className="w-full h-auto rounded-2xl object-contain block"
-                loading="lazy"
-              />
+        <div className="relative z-10 max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-20 xl:px-[120px] py-20 sm:py-24 lg:py-28">
+          <div className="max-w-xl space-y-6">
+            <div className="flex items-center gap-3">
+              <span className="w-8 h-[2px] bg-[#E9B949] rounded-full shrink-0" aria-hidden="true" />
+              <span className="text-xs sm:text-sm font-semibold text-[#E9B949] tracking-wide">Android hazırlık</span>
             </div>
-            <p className="text-xs font-bold text-[#101412]">Keşfet Akışı</p>
-          </div>
-
-          <div className="space-y-3 text-center">
-            <div className="rounded-3xl p-2 bg-[#0A2B20] border border-[#26382F] shadow-md overflow-hidden">
-              <img
-                src="/app-screens/screen-map.png"
-                alt="İnteraktif Harita"
-                width={460}
-                height={1024}
-                className="w-full h-auto rounded-2xl object-contain block"
-                loading="lazy"
-              />
-            </div>
-            <p className="text-xs font-bold text-[#101412]">Gezgin Haritası</p>
-          </div>
-
-          <div className="space-y-3 text-center">
-            <div className="rounded-3xl p-2 bg-[#0A2B20] border border-[#26382F] shadow-md overflow-hidden">
-              <img
-                src="/app-screens/screen-route.png"
-                alt="Rota Detayı"
-                width={460}
-                height={1024}
-                className="w-full h-auto rounded-2xl object-contain block"
-                loading="lazy"
-              />
-            </div>
-            <p className="text-xs font-bold text-[#101412]">Rota & Duraklar</p>
-          </div>
-
-          <div className="space-y-3 text-center">
-            <div className="rounded-3xl p-2 bg-[#0A2B20] border border-[#26382F] shadow-md overflow-hidden">
-              <img
-                src="/app-screens/screen-profile.png"
-                alt="Gezgin Profili"
-                width={460}
-                height={1024}
-                className="w-full h-auto rounded-2xl object-contain block"
-                loading="lazy"
-              />
-            </div>
-            <p className="text-xs font-bold text-[#101412]">Gezgin Profili</p>
-          </div>
-        </div>
-      </section>
-
-      {/* 5. Android Sürüm Durumu Kapanış Alanı */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
-        <div className="bg-[#FFFFFF] border-2 border-[#0F3D2E] rounded-3xl p-8 sm:p-12 shadow-sm flex flex-col md:flex-row items-center justify-between gap-8">
-          <div className="space-y-3 text-center md:text-left">
-            <div className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0F3D2E] uppercase tracking-wider">
-              {downloadReady ? (
-                <>
-                  <ShieldCheck className="w-4 h-4 text-[#0F3D2E]" />
-                  <span>Android Sürümü Yayında</span>
-                </>
-              ) : (
-                <>
-                  <Clock className="w-4 h-4 text-[#D97706]" />
-                  <span>Android Sürümü Hazırlanıyor (v{DOWNLOAD_CONFIG.version})</span>
-                </>
-              )}
-            </div>
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-[#101412]">
-              SKAVVIA Android Dağıtım Durumu
-            </h3>
-            <p className="text-[#646B78] text-sm sm:text-base max-w-md">
-              {downloadReady
-                ? 'Resmi APK dosyasını indirerek Android cihazınızda hemen keşfe başlayabilirsiniz.'
-                : `v${DOWNLOAD_CONFIG.version} (${DOWNLOAD_CONFIG.architecture}, ~${DOWNLOAD_CONFIG.size}) test paketi hazırlanmaktadır. Dağıtım detayları ve gereksinimler için indirme sayfasını inceleyebilirsiniz.`}
+            <h2 id="android-preparation-title" className="text-4xl sm:text-5xl lg:text-[56px] font-serif font-bold tracking-tight leading-[1.08]">
+              Yeni keşiflere hazırlan.
+            </h2>
+            <p className="text-base sm:text-lg text-[#F5F5F0]/85 leading-relaxed max-w-md">
+              Android sürümü hazırlanıyor. Yayınlandığında buradan indirebilirsin.
             </p>
+            <Link
+              to="/download"
+              className="inline-flex items-center gap-2 rounded-full bg-[#E9B949] px-6 py-3 text-sm font-semibold text-[#0A2B20] shadow-lg hover:bg-[#F4D47A] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+            >
+              <Smartphone className="w-4 h-4" aria-hidden="true" />
+              <span>Android Sürümü</span>
+            </Link>
           </div>
-
-          <Link
-            to="/download"
-            className="shrink-0 inline-flex items-center gap-2.5 bg-[#0F3D2E] text-[#F5F5F0] hover:bg-[#0A2B20] text-base font-semibold px-8 py-4 rounded-full shadow-md hover:shadow-lg transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E9B949]"
-          >
-            <Smartphone className="w-5 h-5 text-[#E9B949]" />
-            <span>İndirme Sayfasını İncele</span>
-          </Link>
         </div>
       </section>
-      </div>
     </div>
   );
 };
