@@ -103,9 +103,9 @@ export const Navbar: React.FC = () => {
 
             <Link
               to="/support"
-              className={`text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-gold py-1 ${
+              className={`relative text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-gold py-1 ${
                 isLinkActive('/support')
-                  ? 'text-[#0F3D2E] font-semibold'
+                  ? 'text-[#0F3D2E] font-semibold after:absolute after:-bottom-2 after:inset-x-0 after:h-[2px] after:rounded-full after:bg-[#E9B949]'
                   : 'text-[#4A5568] hover:text-[#0F3D2E]'
               }`}
             >
