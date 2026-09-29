@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useRouter } from '../router';
-import { Menu, X } from 'lucide-react';
+import { Menu, Smartphone, X } from 'lucide-react';
 import { DOWNLOAD_CONFIG, isDownloadReady } from '../config/download';
 
 export const Navbar: React.FC = () => {
@@ -53,7 +53,7 @@ export const Navbar: React.FC = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-[#F5F5F0]/95 backdrop-blur-md border-b border-[#E1E4DE]/80 transition-all">
+    <header className="relative z-50 bg-[#F5F5F0]/95 backdrop-blur-md border-b border-[#E1E4DE]/80 transition-all">
       <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-20 xl:px-[120px]">
         <div className="flex items-center justify-between h-[72px]">
           
@@ -119,7 +119,7 @@ export const Navbar: React.FC = () => {
               aria-label={downloadReady ? 'Android için İndir' : 'Android Sürümü Durumu'}
             >
               <span>Android Sürümü</span>
-              <span className="text-[#E9B949] text-base leading-none font-normal" aria-hidden="true">↗</span>
+              <Smartphone className="w-4 h-4 text-[#E9B949]" aria-hidden="true" />
             </Link>
           </nav>
 
@@ -193,7 +193,7 @@ export const Navbar: React.FC = () => {
               className="flex items-center justify-center gap-2 w-full bg-forest text-brand-offwhite px-4 py-3 rounded-xl font-semibold text-base shadow-xs"
             >
               <span>Android Sürümü</span>
-              <span className="text-gold text-base leading-none" aria-hidden="true">↗</span>
+              <Smartphone className="w-4 h-4 text-gold" aria-hidden="true" />
             </Link>
           </div>
         </div>
