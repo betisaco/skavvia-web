@@ -58,8 +58,8 @@ export const HomePage: React.FC = () => {
               </div>
 
               {/* Large Display Headline in Forest Green #0F3D2E (Keşfet. Paylaş. / İz Bırak.) */}
-              <h1 className="text-4xl sm:text-5xl lg:text-[56px] xl:text-[62px] font-serif font-bold text-[#0F3D2E] tracking-tight leading-[1.08]">
-                Keşfet. Paylaş. <br className="hidden sm:inline" />
+              <h1 className="text-4xl sm:text-5xl lg:text-[56px] xl:text-[62px] font-display font-semibold text-[#0F3D2E] tracking-tight leading-[1.08]">
+                Keşfet. Paylaş. <br />
                 İz Bırak.
               </h1>
 
@@ -128,7 +128,7 @@ export const HomePage: React.FC = () => {
                   Nasıl çalışır
                 </span>
               </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-serif font-bold text-[#0F3D2E] tracking-tight leading-[1.15]">
+              <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-display font-semibold text-[#0F3D2E] tracking-tight leading-[1.15]">
                 Her keşif bir hikâyeye dönüşür.
               </h2>
             </div>
@@ -187,7 +187,7 @@ export const HomePage: React.FC = () => {
               </div>
 
               {/* Large Display Headline in Forest Green #0F3D2E */}
-              <h2 className="text-3xl sm:text-4xl lg:text-[44px] xl:text-[48px] font-serif font-bold text-[#0F3D2E] tracking-tight leading-[1.12]">
+              <h2 className="text-3xl sm:text-4xl lg:text-[44px] xl:text-[48px] font-display font-semibold text-[#0F3D2E] tracking-tight leading-[1.12]">
                 Bir sonraki keşfin <br className="hidden sm:inline" />
                 burada başlasın.
               </h2>
@@ -282,7 +282,7 @@ export const HomePage: React.FC = () => {
               </div>
 
               {/* Large Display Headline in Forest Green #0F3D2E */}
-              <h2 className="text-3xl sm:text-4xl lg:text-[44px] xl:text-[48px] font-serif font-bold text-[#0F3D2E] tracking-tight leading-[1.12]">
+              <h2 className="text-3xl sm:text-4xl lg:text-[44px] xl:text-[48px] font-display font-semibold text-[#0F3D2E] tracking-tight leading-[1.12]">
                 Yakınında keşfedilecek <br className="hidden sm:inline" />
                 bir yer var.
               </h2>
@@ -333,7 +333,7 @@ export const HomePage: React.FC = () => {
               </div>
 
               {/* Large Display Headline in Forest Green #0F3D2E */}
-              <h2 className="text-3xl sm:text-4xl lg:text-[44px] xl:text-[48px] font-serif font-bold text-[#0F3D2E] tracking-tight leading-[1.12]">
+              <h2 className="text-3xl sm:text-4xl lg:text-[44px] xl:text-[48px] font-display font-semibold text-[#0F3D2E] tracking-tight leading-[1.12]">
                 Her durakta yeni bir <br className="hidden sm:inline" />
                 hikâye.
               </h2>
@@ -457,7 +457,7 @@ export const HomePage: React.FC = () => {
               </div>
 
               {/* Large Display Headline in Forest Green #0F3D2E */}
-              <h2 className="text-3xl sm:text-4xl lg:text-[44px] xl:text-[48px] font-serif font-bold text-[#0F3D2E] tracking-tight leading-[1.12]">
+              <h2 className="text-3xl sm:text-4xl lg:text-[44px] xl:text-[48px] font-display font-semibold text-[#0F3D2E] tracking-tight leading-[1.12]">
                 Keşiflerin senin <br className="hidden sm:inline" />
                 hikâyen.
               </h2>
@@ -498,7 +498,7 @@ export const HomePage: React.FC = () => {
               <span className="w-8 h-[2px] bg-[#E9B949] rounded-full shrink-0" aria-hidden="true" />
               <span className="text-xs sm:text-sm font-semibold text-[#E9B949] tracking-wide">Android hazırlık</span>
             </div>
-            <h2 id="android-preparation-title" className="text-4xl sm:text-5xl lg:text-[56px] font-serif font-bold tracking-tight leading-[1.08]">
+            <h2 id="android-preparation-title" className="text-4xl sm:text-5xl lg:text-[56px] font-display font-semibold tracking-tight leading-[1.08]">
               Yeni keşiflere hazırlan.
             </h2>
             <p className="text-base sm:text-lg text-[#F5F5F0]/85 leading-relaxed max-w-md">

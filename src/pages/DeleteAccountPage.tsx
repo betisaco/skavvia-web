@@ -36,7 +36,7 @@ Hesap silme işleminin geri alınamaz olduğunu biliyor ve onaylıyorum.`;
           <Trash2 className="w-3.5 h-3.5 text-[#E0245E]" />
           Google Play Uyumlu Hesap Yönetimi
         </div>
-        <h1 className="text-3xl sm:text-5xl font-extrabold text-[#101412] tracking-tight">
+        <h1 className="text-3xl sm:text-5xl font-display font-semibold text-[#101412] tracking-tight">
           Hesap ve Veri Silme Talebi
         </h1>
         <p className="text-base text-[#646B78] leading-relaxed">

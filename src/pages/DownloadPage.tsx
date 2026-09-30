@@ -56,7 +56,7 @@ export const DownloadPage: React.FC = () => {
             <span className="inline-flex items-center gap-2 rounded-full bg-[#E2EEE7]/95 px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.06em] text-[#0F3D2E]">
               <Smartphone className="h-3.5 w-3.5" aria-hidden="true" /> Resmi Android Dağıtım Merkezi
             </span>
-            <h1 id="download-title" className="mt-5 font-serif text-[clamp(50px,5.5vw,78px)] font-bold leading-[0.98] tracking-tight text-[#101F1C]">
+            <h1 id="download-title" className="mt-5 font-display text-[clamp(50px,5.5vw,78px)] font-semibold leading-[0.98] tracking-tight text-[#101F1C]">
               SKAVVIA,<br />Android’de.
             </h1>
             <p className="mt-5 max-w-[470px] text-base leading-relaxed text-[#596574] sm:text-lg">
@@ -122,7 +122,7 @@ export const DownloadPage: React.FC = () => {
         <section id="verification" aria-labelledby="verification-title" className="scroll-mt-8">
           <div className="flex items-start gap-3">
             <ShieldCheck className="mt-1 h-6 w-6 shrink-0 text-[#0F3D2E]" aria-hidden="true" />
-            <div><h2 id="verification-title" className="font-serif text-3xl font-bold text-[#101F1C] sm:text-4xl">Dosyanı doğrula.</h2><p className="mt-1 text-sm text-[#6B7280]">Güvenli bir deneyim için dosya bütünlüğünü kontrol et.</p></div>
+            <div><h2 id="verification-title" className="font-display text-3xl font-semibold text-[#101F1C] sm:text-4xl">Dosyanı doğrula.</h2><p className="mt-1 text-sm text-[#6B7280]">Güvenli bir deneyim için dosya bütünlüğünü kontrol et.</p></div>
           </div>
           <div className="mt-5 grid gap-4 lg:grid-cols-2">
             <article className="rounded-2xl border border-[#E1E7E0] bg-white p-5 sm:p-6">
@@ -143,7 +143,7 @@ export const DownloadPage: React.FC = () => {
         </section>
 
         <section aria-labelledby="installation-title">
-          <div className="flex items-start gap-3"><Wrench className="mt-1 h-6 w-6 shrink-0 text-[#0F3D2E]" aria-hidden="true" /><div><h2 id="installation-title" className="font-serif text-3xl font-bold text-[#101F1C] sm:text-4xl">Güvenli Kurulum Rehberi</h2><p className="mt-1 text-sm text-[#6B7280]">SKAVVIA yayınlandığında güvenli kurulum için bu adımları izle.</p></div></div>
+          <div className="flex items-start gap-3"><Wrench className="mt-1 h-6 w-6 shrink-0 text-[#0F3D2E]" aria-hidden="true" /><div><h2 id="installation-title" className="font-display text-3xl font-semibold text-[#101F1C] sm:text-4xl">Güvenli Kurulum Rehberi</h2><p className="mt-1 text-sm text-[#6B7280]">SKAVVIA yayınlandığında güvenli kurulum için bu adımları izle.</p></div></div>
           <div className="mt-5 grid gap-4 lg:grid-cols-3">
             {[
               { number: '01', title: 'APK’yı indir', body: 'Yayınlandığında indirme butonunu kullanarak resmi SKAVVIA APK dosyasını cihazına indir.', Icon: FileCheck2 },
@@ -165,7 +165,7 @@ export const DownloadPage: React.FC = () => {
         </aside>
 
         <section aria-labelledby="release-notes-title">
-          <div className="flex flex-wrap items-center gap-3"><FileText className="h-6 w-6 text-[#0F3D2E]" aria-hidden="true" /><h2 id="release-notes-title" className="font-serif text-3xl font-bold text-[#101F1C] sm:text-4xl">Bu sürümde</h2>{DOWNLOAD_CONFIG.version && <span className="rounded-full bg-[#E2EEE7] px-3 py-1 text-xs font-semibold text-[#0F3D2E]">v{DOWNLOAD_CONFIG.version}</span>}</div>
+          <div className="flex flex-wrap items-center gap-3"><FileText className="h-6 w-6 text-[#0F3D2E]" aria-hidden="true" /><h2 id="release-notes-title" className="font-display text-3xl font-semibold text-[#101F1C] sm:text-4xl">Bu sürümde</h2>{DOWNLOAD_CONFIG.version && <span className="rounded-full bg-[#E2EEE7] px-3 py-1 text-xs font-semibold text-[#0F3D2E]">v{DOWNLOAD_CONFIG.version}</span>}</div>
           <p className="mt-2 text-sm text-[#6B7280]">Resmi sürüm notları henüz yayınlanmadı. Aşağıdakiler genel iyileştirme alanlarıdır; tamamlanmış sürüm değişiklikleri olarak sunulmaz.</p>
           <div className="mt-5 grid gap-3 rounded-2xl border border-[#E1E7E0] bg-white p-4 sm:grid-cols-2 lg:grid-cols-4">
             {['Performans ve kararlılık', 'Harita deneyimi', 'Keşfet deneyimi', 'Hata düzeltmeleri'].map((area) => <div key={area} className="flex items-center gap-2 border-[#E1E7E0] p-2 text-sm text-[#536258] lg:border-r lg:last:border-r-0"><span className="h-2 w-2 shrink-0 rounded-full bg-[#E9B949]" aria-hidden="true" />{area}</div>)}
@@ -177,7 +177,7 @@ export const DownloadPage: React.FC = () => {
         <img src="/images/download/skavvia-download-security-bg-v2.png" alt="" aria-hidden="true" width={1915} height={233} loading="lazy" className="absolute inset-0 -z-20 h-full w-full object-cover object-center" />
         <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#09291F]/95 via-[#0F3D2E]/86 to-[#0A2B20]/56" aria-hidden="true" />
         <div className="flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex items-start gap-4"><ShieldCheck className="mt-1 h-8 w-8 shrink-0 text-[#E9B949]" aria-hidden="true" /><div><h2 id="official-source-title" className="font-serif text-xl font-bold leading-tight sm:text-2xl">SKAVVIA’yı yalnızca resmi kaynaktan indirin.</h2><p className="mt-1 text-sm text-[#E3EDE6]">skavvia.com — Resmi dağıtım kaynağı</p></div></div>
+          <div className="flex items-start gap-4"><ShieldCheck className="mt-1 h-8 w-8 shrink-0 text-[#E9B949]" aria-hidden="true" /><div><h2 id="official-source-title" className="font-display text-xl font-semibold leading-tight sm:text-2xl">SKAVVIA’yı yalnızca resmi kaynaktan indirin.</h2><p className="mt-1 text-sm text-[#E3EDE6]">skavvia.com — Resmi dağıtım kaynağı</p></div></div>
           <a href="#verification" className="inline-flex min-h-11 shrink-0 items-center gap-2 rounded-full border border-[#E9B949] bg-[#0A2B20]/70 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#0F3D2E]">Doğrulamayı İncele <ArrowRight className="h-4 w-4 text-[#E9B949]" aria-hidden="true" /></a>
         </div>
       </section>

@@ -14,7 +14,7 @@ export const PrivacyPage: React.FC = () => {
           <Shield className="w-3.5 h-3.5" />
           Yasal Doküman (Taslak)
         </div>
-        <h1 className="text-3xl sm:text-5xl font-extrabold text-[#101412] tracking-tight">
+        <h1 className="text-3xl sm:text-5xl font-display font-semibold text-[#101412] tracking-tight">
           Gizlilik Politikası
         </h1>
         <p className="text-sm text-[#8D9892]">
