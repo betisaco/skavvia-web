@@ -40,7 +40,7 @@ export const SupportPage: React.FC = () => {
         <div className="mx-auto max-w-[1440px] px-6 pb-10 pt-12 sm:px-10 md:pt-14 lg:px-20 xl:px-[120px] lg:pb-14">
           <div className="max-w-[940px]">
             <span className="inline-flex items-center gap-2 rounded-full bg-[#E3EFE7]/90 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#0F3D2E]"><HelpCircle className="h-3.5 w-3.5" aria-hidden="true" />Yardım Merkezi</span>
-            <h1 id="support-title" className="mt-5 font-serif text-[clamp(38px,5vw,64px)] font-bold leading-[1.06] tracking-tight text-[#101F1C]">Nasıl yardımcı olabiliriz?</h1>
+            <h1 id="support-title" className="mt-5 font-display text-[clamp(38px,5vw,64px)] font-semibold leading-[1.06] tracking-tight text-[#101F1C]">Nasıl yardımcı olabiliriz?</h1>
             <p className="mt-3 max-w-[760px] text-base leading-relaxed text-[#5A6473] sm:text-lg">SKAVVIA ile ilgili sorularına hızlıca yanıt bul veya bizimle iletişime geç.</p>
           </div>
 
@@ -91,7 +91,7 @@ export const SupportPage: React.FC = () => {
 
       <section aria-labelledby="faq-title" className="mx-auto max-w-[1440px] px-6 pb-12 pt-10 sm:px-10 lg:px-20 xl:px-[120px]">
         <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
-          <h2 id="faq-title" className="font-serif text-3xl font-bold tracking-tight text-[#101F1C] sm:text-[42px]">Sıkça Sorulan Sorular</h2>
+          <h2 id="faq-title" className="font-display text-3xl font-semibold tracking-tight text-[#101F1C] sm:text-[42px]">Sıkça Sorulan Sorular</h2>
           <div className="flex flex-wrap gap-2" role="group" aria-label="Sıkça sorulan soru kategorileri">
             {categories.map((category) => <button key={category} type="button" onClick={() => setActiveCategory(category)} aria-pressed={activeCategory === category} className={`rounded-full px-4 py-2 text-xs font-medium transition-colors ${activeCategory === category ? 'bg-[#0F3D2E] text-white' : 'bg-[#E9EBE8] text-[#29443B] hover:bg-[#DCE7DF]'}`}>{category}</button>)}
           </div>
@@ -113,7 +113,7 @@ export const SupportPage: React.FC = () => {
       <section aria-labelledby="contact-title" className="relative isolate flex min-h-[230px] items-center justify-center overflow-hidden px-6 py-10 text-center sm:min-h-[240px]">
         <div className="absolute inset-0 -z-10 sm:hidden" style={{ background: 'radial-gradient(ellipse 100% 75% at 50% 42%, rgba(245,245,240,0.88) 0%, rgba(245,245,240,0.58) 55%, rgba(245,245,240,0.08) 100%)' }} aria-hidden="true" />
         <div className="absolute inset-0 -z-10 hidden sm:block" style={{ background: 'radial-gradient(ellipse 60% 100% at 50% 48%, rgba(245,245,240,0.76) 0%, rgba(245,245,240,0.15) 100%)' }} aria-hidden="true" />
-        <div><h2 id="contact-title" className="font-serif text-3xl font-bold tracking-tight text-[#101F1C] sm:text-[42px]">Yanıtını bulamadın mı?</h2><p className="mt-2 text-sm text-[#536272] sm:text-base">Destek ekibimiz sana yardımcı olmak için burada.</p><a href={supportMailto} className="mt-5 inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-[#0F3D2E] px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#0A2B20]"><Mail className="h-4 w-4 text-[#E9B949]" aria-hidden="true" />Destek Ekibine Yaz<ArrowRight className="h-4 w-4 text-[#E9B949]" aria-hidden="true" /></a></div>
+        <div><h2 id="contact-title" className="font-display text-3xl font-semibold tracking-tight text-[#101F1C] sm:text-[42px]">Yanıtını bulamadın mı?</h2><p className="mt-2 text-sm text-[#536272] sm:text-base">Destek ekibimiz sana yardımcı olmak için burada.</p><a href={supportMailto} className="mt-5 inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-[#0F3D2E] px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#0A2B20]"><Mail className="h-4 w-4 text-[#E9B949]" aria-hidden="true" />Destek Ekibine Yaz<ArrowRight className="h-4 w-4 text-[#E9B949]" aria-hidden="true" /></a></div>
       </section>
       </div>
     </div>

@@ -49,6 +49,7 @@ export default {
         },
       },
       fontFamily: {
+        display: ['Montserrat', 'Arial', 'sans-serif'],
         sans: [
           'Inter',
           '-apple-system',

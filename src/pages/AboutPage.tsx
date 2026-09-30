@@ -43,7 +43,7 @@ export const AboutPage: React.FC = () => {
               <span>Hakkımızda</span>
               <span className="w-8 h-px bg-[#E9B949]" aria-hidden="true" />
             </div>
-            <h1 id="about-title" className="font-serif font-bold text-[#101F1C] text-4xl sm:text-5xl lg:text-[clamp(36px,3.5vw,52px)] leading-[1.06] tracking-tight">
+            <h1 id="about-title" className="font-display font-semibold text-[#101F1C] text-4xl sm:text-5xl lg:text-[clamp(36px,3.5vw,52px)] leading-[1.06] tracking-tight">
               <span className="block">Her keşif,</span>
               <span className="block">paylaşılmaya değer.</span>
             </h1>
@@ -81,7 +81,7 @@ export const AboutPage: React.FC = () => {
           <span>Neden SKAVVIA?</span>
           <span className="w-8 h-px bg-[#E9B949]" aria-hidden="true" />
         </div>
-        <h2 id="why-title" className="mt-4 font-serif font-bold text-[#0F3D2E] text-4xl sm:text-[44px] lg:text-[48px] leading-tight tracking-tight">
+        <h2 id="why-title" className="mt-4 font-display font-semibold text-[#0F3D2E] text-4xl sm:text-[44px] lg:text-[48px] leading-tight tracking-tight">
           Keşif uzağında değil.
         </h2>
         <div className="mt-5 grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-10 lg:gap-12 text-base leading-relaxed text-[#6B7280]">
@@ -132,7 +132,7 @@ export const AboutPage: React.FC = () => {
           />
           <div className="absolute inset-0 bg-[#0A2B20]/65 lg:bg-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-[#0A2B20]/55 lg:to-[#0A2B20]/95" aria-hidden="true" />
           <div className="relative z-10 w-full lg:w-1/2 lg:ml-auto px-7 py-12 sm:px-12 lg:px-14 lg:py-10 xl:px-20 text-[#F5F5F0]">
-            <h2 id="story-title" className="font-serif text-4xl sm:text-5xl lg:text-[48px] leading-[1.08] font-bold tracking-tight">
+            <h2 id="story-title" className="font-display text-4xl sm:text-5xl lg:text-[48px] leading-[1.08] font-semibold tracking-tight">
               <span className="block">Bir yer keşfet.</span>
               <span className="block text-[#E9B949]">Bir hikâye bırak.</span>
             </h2>
@@ -145,7 +145,7 @@ export const AboutPage: React.FC = () => {
 
       <section aria-labelledby="about-cta-title" className="px-6 sm:px-10 py-2 pb-16 lg:pb-16 text-center">
         <div className="max-w-3xl mx-auto">
-          <h2 id="about-cta-title" className="font-serif text-3xl sm:text-4xl lg:text-[42px] font-bold tracking-tight text-[#101F1C]">
+          <h2 id="about-cta-title" className="font-display text-3xl sm:text-4xl lg:text-[42px] font-semibold tracking-tight text-[#101F1C]">
             Sıradaki keşfin yakında olabilir.
           </h2>
           <p className="mt-4 text-base text-[#6B7280] leading-relaxed">
